@@ -10,7 +10,7 @@ class Analysis(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     resume_id = Column(Integer, ForeignKey("resumes.id"), nullable=False, index=True)
-    job_description_id = Column(Integer, ForeignKey("job_descriptions.id"), nullable=True, index=True)
+    job_description_id = Column(Integer, ForeignKey("job_descriptions.id",ondelete="SET NULL"), nullable=True, index=True)
 
     score = Column(Float, nullable=True)
     matched_skills = Column(JSON, nullable=True)
