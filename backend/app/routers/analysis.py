@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.core.dependencies import get_current_user
 from app.models.user import User
-from app.main import limiter  
+from app.core.rate_limit import limiter 
 from app.schemas.analysis import AnalysisRequest, AnalysisResponse
 from app.services.analysis_service import (
     run_analysis,
