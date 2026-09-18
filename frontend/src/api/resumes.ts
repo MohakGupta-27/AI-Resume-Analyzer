@@ -1,8 +1,9 @@
 import type { Resume, ResumeDetail } from "../types";
 import { api } from "./client";
 
-export function listResumes(): Promise<Resume[]> {
-  return api<Resume[]>("/resumes");
+export async function listResumes(): Promise<Resume[]> {
+  const data = await api<{ items: Resume[] }>("/resumes");
+  return data.items;
 }
 
 export function getResume(id: number): Promise<ResumeDetail> {

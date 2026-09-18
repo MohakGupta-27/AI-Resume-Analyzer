@@ -1,8 +1,9 @@
 import type { JobDescription } from "../types";
 import { api } from "./client";
 
-export function listJobDescriptions(): Promise<JobDescription[]> {
-  return api<JobDescription[]>("/job-descriptions");
+export async function listJobDescriptions(): Promise<JobDescription[]> {
+  const data = await api<{ items: JobDescription[] }>("/job-descriptions");
+  return data.items;
 }
 
 export function getJobDescription(id: number): Promise<JobDescription> {
